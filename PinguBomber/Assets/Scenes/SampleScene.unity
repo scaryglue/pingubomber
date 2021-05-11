@@ -4534,6 +4534,52 @@ TilemapCollider2D:
   m_Offset: {x: 0, y: 0}
   m_MaximumTileChangeCount: 1000
   m_ExtrusionFactor: 0.00001
+--- !u!1 &1206429163
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1206429165}
+  - component: {fileID: 1206429164}
+  m_Layer: 0
+  m_Name: BombSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1206429164
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1206429163}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 841f0189e4e6fb340819c2297fe61a7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tilemap: {fileID: 957323256}
+  playerPos: {fileID: 1892369276}
+  bombPrefab: {fileID: 5327427247716169872, guid: c44aac3cdb0a5f64e92794867c42f548, type: 3}
+--- !u!4 &1206429165
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1206429163}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1892369275
 GameObject:
   m_ObjectHideFlags: 0
@@ -4628,6 +4674,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2049476470}
   - component: {fileID: 2049476469}
+  - component: {fileID: 2049476471}
   m_Layer: 0
   m_Name: Grid
   m_TagString: Untagged
@@ -4663,6 +4710,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2049476471
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2049476468}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cff579bf1c6cd1b44a445b541d35aaff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tilemap: {fileID: 957323256}
+  wallTile: {fileID: 11400000, guid: a598e2da61e617d4bae43ea88e8e00c9, type: 2}
+  destructibleTile: {fileID: 11400000, guid: a6820a55d1340ad4c96d5a3d984080b0, type: 2}
+  explosionPrefab: {fileID: 6933768443048390460, guid: 830d0d8764edf09458c468b9587f4c22, type: 3}
 --- !u!1 &2103597064
 GameObject:
   m_ObjectHideFlags: 0
