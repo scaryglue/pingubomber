@@ -13,14 +13,14 @@ public class MapDestroyer : MonoBehaviour
 
     public GameObject explosionPrefab;
 
-    public void Explode(Vector2 worldPos)
+    public void Explode(Vector2 worldPos, int fire)
     {
         Vector3Int originCell = tilemap.WorldToCell(worldPos);
 
         ExplodeCell(originCell);
         
         //Explosions for the other Cells: if there is a wall in one direction, it should stop exploding in that direction
-        for(int i=1; i <= 2; i++)
+        for(int i=1; i <= fire; i++)
         {
             if(!ExplodeCell(originCell + new Vector3Int(i, 0, 0)))
             {
@@ -28,7 +28,7 @@ public class MapDestroyer : MonoBehaviour
             }
         }
 
-        for (int i = 1; i <= 2; i++)
+        for (int i = 1; i <= fire; i++)
         {
             if (!ExplodeCell(originCell + new Vector3Int(0, i, 0)))
             {
@@ -36,7 +36,7 @@ public class MapDestroyer : MonoBehaviour
             }
         }
 
-        for (int i = 1; i <= 2; i++)
+        for (int i = 1; i <= fire; i++)
         {
             if (!ExplodeCell(originCell + new Vector3Int(-i, 0, 0)))
             {
@@ -44,7 +44,7 @@ public class MapDestroyer : MonoBehaviour
             }
         }
 
-        for (int i = 1; i <= 2; i++)
+        for (int i = 1; i <= fire; i++)
         {
             if (!ExplodeCell(originCell + new Vector3Int(0, -i, 0)))
             {

@@ -5,6 +5,7 @@ using UnityEngine;
 public class Bomb : MonoBehaviour
 {
     public float countdown = 2f;
+    public int fire;
 
     // Update is called once per frame
     void Update()
@@ -13,7 +14,7 @@ public class Bomb : MonoBehaviour
 
         if(countdown <= 0f)
         {
-            FindObjectOfType<MapDestroyer>().Explode(transform.position);
+            FindObjectOfType<MapDestroyer>().Explode(transform.position, fire);
             Destroy(gameObject);
         }
     }

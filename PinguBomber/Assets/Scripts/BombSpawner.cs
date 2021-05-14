@@ -6,8 +6,9 @@ using UnityEngine.Tilemaps;
 public class BombSpawner : MonoBehaviour
 {
     public Tilemap tilemap;
-    public Transform playerPos;
     public GameObject bombPrefab;
+    public float bombSize;
+    public float coolDown = 5f;
 
 
     // Update is called once per frame
@@ -15,11 +16,28 @@ public class BombSpawner : MonoBehaviour
     {
         if(Input.GetButtonDown("Jump"))
         {
-            Vector3 worldPos = playerPos.position;
-            Vector3Int cell = tilemap.WorldToCell(worldPos);
-            Vector3 cellCenter = tilemap.GetCellCenterWorld(cell);
+            bombSize = gameObject.GetComponentInParent<PlayerController>().bombSize;
+            if(bombSize >= 1)
+            {
+                Vector3 worldPos = transform.position;
+                Vector3Int cell = tilemap.WorldToCell(worldPos);
+                Vector3 cellCenter = tilemap.GetCellCenterWorld(cell);
 
-            Instantiate(bombPrefab, cellCenter, Quaternion.identity);
+                var newBomb = Instantiate(bombPrefab, cellCenter, Quaternion.identity);
+
+                newBomb.GetComponent<Bomb>().fire = gameObject.GetComponentInParent<PlayerController>().fire;
+
+                gameObject.GetComponentInParent<PlayerController>().bombSize = bombSize - 1;
+
+                StartCoroutine(waitForCooldown());
+            }
         }
+    }
+
+    IEnumerator waitForCooldown()
+    {
+        yield return new WaitForSeconds(coolDown);
+
+        gameObject.GetComponentInParent<PlayerController>().bombSize++;
     }
 }

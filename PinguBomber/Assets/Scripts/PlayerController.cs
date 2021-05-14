@@ -5,6 +5,8 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public float moveSpeed = 3f;
+    public float bombSize = 1;
+    public int fire = 2;
 
     // Start is called before the first frame update
     void Start()
