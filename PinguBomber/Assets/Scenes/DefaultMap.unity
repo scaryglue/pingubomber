@@ -166,6 +166,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed648686273d5a7499bc9fd1b3c35e8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tilemap: {fileID: 957323256}
+  fireItem: {fileID: 6565469257669829144, guid: f40d887a38d4b4b48b4520bc3739887b, type: 3}
+  rollerBlade: {fileID: 344668264102564808, guid: e20eb8895249437449e84d45351b71c5, type: 3}
+  bombUp: {fileID: 4690320798818061782, guid: 0a04a09ae0dfbc04d8570bcea84f7fab, type: 3}
+  freeTile: {fileID: 11400000, guid: 7e04dc1a4754ee540a2a35b1ace768ed, type: 2}
+  itemCount: 5
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -260,7 +266,7 @@ GameObject:
   - component: {fileID: 875997990}
   - component: {fileID: 875997992}
   - component: {fileID: 875997991}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BackGround
   m_TagString: Untagged
   m_Icon: {fileID: 0}
