@@ -8,8 +8,7 @@ This game is still early in development, it lacks *many* features, some of them 
 
 ## TODOs
 
-* Online Mode
-This is probably the biggest one, but I have no experience in online multiplayer games, but I will try to implement it in the future
+* Online Mode \n This is probably the biggest one, but I have no experience in online multiplayer games, but I will try to implement it in the future
 
 * Singleplayer Mode
 
