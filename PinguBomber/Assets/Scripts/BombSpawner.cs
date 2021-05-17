@@ -2,7 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using UnityEngine.InputSystem;
 
+[RequireComponent(typeof(Rigidbody2D))]
 public class BombSpawner : MonoBehaviour
 {
     public Tilemap tilemap;
@@ -10,11 +12,13 @@ public class BombSpawner : MonoBehaviour
     public float bombSize;
     public float coolDown = 5f;
 
+    private bool bombed = false;
+
 
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetButtonDown("Jump"))
+        if(bombed)
         {
             bombSize = gameObject.GetComponentInParent<PlayerController>().bombSize;
             if(bombSize >= 1)
@@ -32,6 +36,11 @@ public class BombSpawner : MonoBehaviour
                 StartCoroutine(waitForCooldown());
             }
         }
+    }
+
+    public void OnBomb(InputAction.CallbackContext context)
+    {
+        bombed = context.action.triggered;
     }
 
     IEnumerator waitForCooldown()

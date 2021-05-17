@@ -1,29 +1,29 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
+    [SerializeField]
     public float moveSpeed = 3f;
+    [SerializeField]
     public float bombSize = 1;
+    [SerializeField]
     public int fire = 2;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-    }
+    public bool started = false;
 
-    // Update is called once per frame
+    private Vector2 movementInput = Vector2.zero;
+
     void Update()
     {
-            if (Mathf.Abs(Input.GetAxisRaw("Horizontal")) == 1f)
-            {
-                    transform.position += new Vector3(Input.GetAxisRaw("Horizontal") * moveSpeed * Time.deltaTime, 0f, 0f);
-            }
-            if (Mathf.Abs(Input.GetAxisRaw("Vertical")) == 1f)
-            {
-                    transform.position += new Vector3(0f, Input.GetAxisRaw("Vertical") * moveSpeed * Time.deltaTime, 0f);
-
-            }
+            transform.position += new Vector3(movementInput.x * moveSpeed * Time.deltaTime, movementInput.y * moveSpeed * Time.deltaTime, 0);
     }
+
+    public void OnMove(InputAction.CallbackContext context)
+    {
+        movementInput = context.ReadValue<Vector2>();
+    }
+
 }
