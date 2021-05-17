@@ -16,6 +16,8 @@ public class PlayerController : MonoBehaviour
 
     private Vector2 movementInput = Vector2.zero;
 
+    public int playerNumber;
+
     void Update()
     {
             transform.position += new Vector3(movementInput.x * moveSpeed * Time.deltaTime, movementInput.y * moveSpeed * Time.deltaTime, 0);

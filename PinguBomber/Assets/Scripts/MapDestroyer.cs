@@ -70,8 +70,15 @@ public class MapDestroyer : MonoBehaviour
 
         //Create an explosion
         Vector3 pos = tilemap.GetCellCenterWorld(cell);
-        Instantiate(explosionPrefab, pos, Quaternion.identity);
+        var explosion = Instantiate(explosionPrefab, pos, Quaternion.identity);
+        StartCoroutine(waitForAnimation(explosion));
 
         return true;
+    }
+
+    IEnumerator waitForAnimation(GameObject explosion)
+    {
+        yield return new WaitForSeconds(0.3f);
+        Destroy(explosion);
     }
 }

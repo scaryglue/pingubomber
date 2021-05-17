@@ -11,42 +11,38 @@ public class PlayerManager : MonoBehaviour
 
     private List<PlayerInput> players = new List<PlayerInput>();
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void OnJoin(PlayerInput pi)
     {
         if(numPlayers == 0)
         {
-            //pi.DeactivateInput();
+            pi.DeactivateInput();
             pi.transform.position = new Vector3(-6.5f, -4.5f, 0f);
-            pi.GetComponentInChildren<BombSpawner>().tilemap = thisTilemap;
+            pi.GetComponent<BombSpawner>().tilemap = thisTilemap;
+            pi.GetComponent<PlayerController>().playerNumber = 1;
         }
         else if(numPlayers == 1)
         {
             pi.transform.position = new Vector3(4.5f, 6.5f, 0);
-            pi.GetComponentInChildren<BombSpawner>().tilemap = thisTilemap;
-            //pi.DeactivateInput();
+            pi.GetComponent<BombSpawner>().tilemap = thisTilemap;
+            pi.GetComponent<PlayerController>().playerNumber = 2;
+            pi.DeactivateInput();
         }
         players.Add(pi);
         numPlayers++;
 
         if(numPlayers == 2)
         {
-            foreach(PlayerInput player in players)
-            {
-                //player.ActivateInput();
-            }
+            StartCoroutine(waitTilBeginning());
         }
 
+    }
+
+    IEnumerator waitTilBeginning()
+    {
+        yield return new WaitForSeconds(1f);
+        foreach (PlayerInput player in players)
+        {
+            player.ActivateInput();
+        }
     }
 }
