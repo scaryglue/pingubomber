@@ -13,11 +13,15 @@ public class MapDestroyer : MonoBehaviour
 
     public GameObject explosionPrefab;
 
+    public AudioSource explosionSound;
+
     public void Explode(Vector2 worldPos, int fire)
     {
         Vector3Int originCell = tilemap.WorldToCell(worldPos);
 
         ExplodeCell(originCell);
+
+        explosionSound.Play();
         
         //Explosions for the other Cells: if there is a wall in one direction, it should stop exploding in that direction
         for(int i=1; i <= fire; i++)

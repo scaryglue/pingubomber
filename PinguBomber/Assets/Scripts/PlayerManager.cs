@@ -47,4 +47,12 @@ public class PlayerManager : MonoBehaviour
             player.ActivateInput();
         }
     }
+
+    public void DisableInputs()
+    {
+        foreach (PlayerInput player in players)
+        {
+            player.DeactivateInput();
+        }
+    }
 }

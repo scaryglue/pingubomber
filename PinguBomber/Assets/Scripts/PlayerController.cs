@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Tilemaps;
+using UnityEngine.Audio;
 
 public class PlayerController : MonoBehaviour
 {
@@ -21,6 +22,8 @@ public class PlayerController : MonoBehaviour
     private Vector2 movementInput = Vector2.zero;
 
     public int playerNumber;
+
+    public AudioSource moveSound;
 
     void Update()
     {
@@ -60,10 +63,13 @@ public class PlayerController : MonoBehaviour
     {
         isMoving = true;
 
+        moveSound.Play();
+
         float elapsedTime = 0;
 
         originPos = transform.position;
         targetPos = originPos + movement;
+
 
         while(elapsedTime < timeToMove)
         {
@@ -71,6 +77,8 @@ public class PlayerController : MonoBehaviour
             elapsedTime += Time.deltaTime;
             yield return null;
         }
+
+        moveSound.Stop();
 
         isMoving = false;
     }

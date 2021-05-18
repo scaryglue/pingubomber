@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class Fire : MonoBehaviour
 {
+    public AudioSource pickupSound;
+
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
         {
+            pickupSound.Play();
             Pickup(other);
         }
     }
