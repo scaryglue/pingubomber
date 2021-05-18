@@ -5,11 +5,8 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField]
     public float moveSpeed = 3f;
-    [SerializeField]
-    public float bombSize = 1;
-    [SerializeField]
+    public float bombSize = 2;
     public int fire = 2;
 
     public bool started = false;

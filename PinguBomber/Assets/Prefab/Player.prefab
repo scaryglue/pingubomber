@@ -52,6 +52,7 @@ MonoBehaviour:
   bombSize: 2
   fire: 2
   started: 0
+  playerNumber: 0
 --- !u!58 &7791559079596998448
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -165,7 +166,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tilemap: {fileID: 0}
   bombPrefab: {fileID: 5327427247716169872, guid: c44aac3cdb0a5f64e92794867c42f548, type: 3}
-  bombSize: 0
+  bombSize: 2
   coolDown: 5
 --- !u!1 &7791559079774659654
 GameObject:

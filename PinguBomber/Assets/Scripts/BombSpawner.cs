@@ -4,34 +4,39 @@ using UnityEngine;
 using UnityEngine.Tilemaps;
 using UnityEngine.InputSystem;
 
-[RequireComponent(typeof(Rigidbody2D))]
 public class BombSpawner : MonoBehaviour
 {
     public Tilemap tilemap;
     public GameObject bombPrefab;
     public float bombSize;
-    public float coolDown = 5f;
+    public float coolDown = 3f;
 
     private bool bombed = false;
-
+    private Vector3 alreadyBombed;
 
     // Update is called once per frame
     void Update()
     {
         if(bombed)
         {
-            bombSize = gameObject.GetComponentInParent<PlayerController>().bombSize;
+            bombSize = gameObject.GetComponent<PlayerController>().bombSize;
             if(bombSize >= 1)
             {
                 Vector3 worldPos = transform.position;
                 Vector3Int cell = tilemap.WorldToCell(worldPos);
                 Vector3 cellCenter = tilemap.GetCellCenterWorld(cell);
 
+                if (alreadyBombed.Equals(cellCenter))
+                    return;
+
+                alreadyBombed = cellCenter;
+
                 var newBomb = Instantiate(bombPrefab, cellCenter, Quaternion.identity);
 
-                newBomb.GetComponent<Bomb>().fire = gameObject.GetComponentInParent<PlayerController>().fire;
+                newBomb.GetComponent<Bomb>().fire = gameObject.GetComponent<PlayerController>().fire;
 
-                gameObject.GetComponentInParent<PlayerController>().bombSize = bombSize - 1;
+                bombSize--;
+                gameObject.GetComponent<PlayerController>().bombSize = bombSize;
 
                 StartCoroutine(waitForCooldown());
             }
@@ -46,7 +51,7 @@ public class BombSpawner : MonoBehaviour
     IEnumerator waitForCooldown()
     {
         yield return new WaitForSeconds(coolDown);
-
-        gameObject.GetComponentInParent<PlayerController>().bombSize++;
+        gameObject.GetComponent<PlayerController>().bombSize++;
+        Debug.Log(gameObject.GetComponent<PlayerController>().bombSize);
     }
 }
