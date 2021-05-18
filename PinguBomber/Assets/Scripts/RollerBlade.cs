@@ -5,7 +5,7 @@ using UnityEngine;
 public class RollerBlade : MonoBehaviour
 {
     public float itemDuration = 10f;
-    public float multiplier = 1.5f;
+    public float multiplier = 1.1f;
 
     void OnTriggerEnter2D(Collider2D other)
     {
@@ -18,14 +18,14 @@ public class RollerBlade : MonoBehaviour
     IEnumerator Pickup(Collider2D player)
     {
         PlayerController controller = player.GetComponent<PlayerController>();
-        controller.moveSpeed *= multiplier;
+        controller.timeToMove /= multiplier;
 
         GetComponent<SpriteRenderer>().enabled = false;
         GetComponent<BoxCollider2D>().enabled = false;
 
         yield return new WaitForSeconds(itemDuration);
 
-        controller.moveSpeed /= multiplier;
+        controller.timeToMove *= multiplier;
 
         Destroy(gameObject);
     }

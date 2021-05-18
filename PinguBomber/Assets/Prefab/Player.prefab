@@ -51,7 +51,8 @@ MonoBehaviour:
   moveSpeed: 3
   bombSize: 2
   fire: 2
-  started: 0
+  originPos: {fileID: 7791559079596998450}
+  timeToMove: 0.5
   playerNumber: 0
 --- !u!58 &7791559079596998448
 CircleCollider2D:

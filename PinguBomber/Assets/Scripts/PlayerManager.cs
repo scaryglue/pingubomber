@@ -19,13 +19,15 @@ public class PlayerManager : MonoBehaviour
             pi.transform.position = new Vector3(-6.5f, -4.5f, 0f);
             pi.GetComponent<BombSpawner>().tilemap = thisTilemap;
             pi.GetComponent<PlayerController>().playerNumber = 1;
+            pi.GetComponent<PlayerController>().tilemap = thisTilemap;
         }
         else if(numPlayers == 1)
         {
+            pi.DeactivateInput();
             pi.transform.position = new Vector3(4.5f, 6.5f, 0);
             pi.GetComponent<BombSpawner>().tilemap = thisTilemap;
             pi.GetComponent<PlayerController>().playerNumber = 2;
-            pi.DeactivateInput();
+            pi.GetComponent<PlayerController>().tilemap = thisTilemap;
         }
         players.Add(pi);
         numPlayers++;

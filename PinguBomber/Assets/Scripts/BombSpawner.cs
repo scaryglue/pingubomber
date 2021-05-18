@@ -52,6 +52,5 @@ public class BombSpawner : MonoBehaviour
     {
         yield return new WaitForSeconds(coolDown);
         gameObject.GetComponent<PlayerController>().bombSize++;
-        Debug.Log(gameObject.GetComponent<PlayerController>().bombSize);
     }
 }
