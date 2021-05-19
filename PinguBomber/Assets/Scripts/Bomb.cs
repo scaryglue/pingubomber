@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Bomb : MonoBehaviour
 {
-    public float countdown = 2f;
+    public float countdown = 3f;
     public int fire;
 
     // Update is called once per frame

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6933768443048390459}
   - component: {fileID: 8318744604629932801}
   - component: {fileID: -8909409981442727551}
+  - component: {fileID: -236866572455370697}
   m_Layer: 0
   m_Name: Explosion_Animation
   m_TagString: Untagged
@@ -131,5 +132,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6e793080a3b9d804188c26138a70fd6f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-236866572455370697
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6933768443048390460}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15f607cc4817f7448af753018d1b427a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

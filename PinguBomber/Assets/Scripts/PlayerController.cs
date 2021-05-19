@@ -96,9 +96,7 @@ public class PlayerController : MonoBehaviour
     }
 
     void OnTriggerEnter2D(Collider2D other) {
-        Debug.Log("Hallo1");
         if(other.gameObject.CompareTag("Powerup")) {
-            Debug.Log("Hallo");
             pickupSound.Play();
         }
     }
