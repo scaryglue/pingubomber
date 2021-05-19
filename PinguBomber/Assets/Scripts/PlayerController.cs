@@ -78,6 +78,7 @@ public class PlayerController : MonoBehaviour
             yield return null;
         }
 
+        transform.position = tilemap.WorldToCell(targetPos);
         moveSound.Stop();
 
         isMoving = false;

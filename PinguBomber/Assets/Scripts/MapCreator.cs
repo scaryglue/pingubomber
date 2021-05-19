@@ -15,6 +15,9 @@ public class MapCreator : MonoBehaviour
 
     public GameObject grid;
 
+    public const int dirt_tiles = 30;
+    public int number_dirt = 0;
+
 
     void Awake()
     {
@@ -59,6 +62,29 @@ public class MapCreator : MonoBehaviour
             gptm.SetTile(new Vector3Int(basePosition.x + size, basePosition.y + i, 0), wallTile);
         }
 
+        //Add inner wallblocks
+        for(int i=4; i <= size; i += 4) {
+            for(int j=4; j <= size; j +=4) {
+                gptm.SetTile(new Vector3Int(basePosition.x + i, basePosition.y + j, 0), wallTile);
+            }
+        }
+
+
+        //Setting the dirt:
+        for(int i=2; i < size; i++) {
+            for(int j=2; j < size; j++) {
+                if(Random.Range(0,10) == 5 && number_dirt <= dirt_tiles) {
+                    gptm.SetTile(new Vector3Int(basePosition.x + i, basePosition.y + j, 0), dirtTile);
+                    number_dirt++;
+                }
+            }
+        }
+
+        //Assigning the newly created Tilemap to every component that needs it
+
+        GameObject.Find("Grid").GetComponent<MapDestroyer>().tilemap = gptm;
+        GameObject.Find("ItemSpawner").GetComponent<ItemSpawner>().tilemap = gptm;
+        GameObject.Find("PlayerManager").GetComponent<PlayerManager>().thisTilemap = gptm;
 
         var tmCollider = GamePlayTilemap.AddComponent<TilemapCollider2D>();
         var composite = GamePlayTilemap.AddComponent<CompositeCollider2D>();

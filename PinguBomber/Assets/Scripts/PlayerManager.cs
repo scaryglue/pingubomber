@@ -21,12 +21,21 @@ public class PlayerManager : MonoBehaviour
 
     public GameObject CountdownBackground;
 
+    public Vector3Int basePosition;
+
+    public int mapSize;
+
+    void Start() {
+        basePosition = thisTilemap.origin;
+        mapSize = FindObjectOfType<MapCreator>().size;
+    }
+
     public void OnJoin(PlayerInput pi)
     {
         if(numPlayers == 0)
         {
             pi.DeactivateInput();
-            pi.transform.position = new Vector3(-6.5f, -4.5f, 0f);
+            pi.transform.position = new Vector3(basePosition.x + 1, basePosition.y + 1, 0f);
             pi.GetComponent<BombSpawner>().tilemap = thisTilemap;
             pi.GetComponent<PlayerController>().playerNumber = 1;
             pi.GetComponent<PlayerController>().tilemap = thisTilemap;
@@ -35,7 +44,7 @@ public class PlayerManager : MonoBehaviour
         else if(numPlayers == 1)
         {
             pi.DeactivateInput();
-            pi.transform.position = new Vector3(4.5f, 6.5f, 0);
+            pi.transform.position = new Vector3(basePosition.x + mapSize - 1, basePosition.y + mapSize - 1, 0);
             pi.GetComponent<BombSpawner>().tilemap = thisTilemap;
             pi.GetComponent<PlayerController>().playerNumber = 2;
             pi.GetComponent<PlayerController>().tilemap = thisTilemap;

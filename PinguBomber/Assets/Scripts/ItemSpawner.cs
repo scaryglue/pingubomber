@@ -13,7 +13,7 @@ public class ItemSpawner : MonoBehaviour
 
     public Tile freeTile;
 
-    public int itemCount = 5;
+    public int itemCount = 50;
 
     public int speedItems = 0;
 
@@ -29,7 +29,7 @@ public class ItemSpawner : MonoBehaviour
 
             if(tilemap.GetTile<Tile>(position) == null)
             {
-                int randomCount = Random.Range(0, 50);
+                int randomCount = Random.Range(0, 30);
 
                 if(randomCount == 0)
                 {

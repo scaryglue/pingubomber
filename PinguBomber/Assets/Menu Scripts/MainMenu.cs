@@ -21,4 +21,8 @@ public class MainMenu : MonoBehaviour
     {
         mixer.SetFloat("masterVol", Mathf.Log10(value) * 20);
     }
+
+    public void PlayRandomGame() {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 2);
+    }
 }
