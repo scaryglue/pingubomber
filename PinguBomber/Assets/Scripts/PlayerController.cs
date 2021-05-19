@@ -24,7 +24,7 @@ public class PlayerController : MonoBehaviour
     public int playerNumber;
 
     public AudioSource moveSound;
-
+    public AudioSource pickupSound;
     void Update()
     {
         if(isMoving)
@@ -93,6 +93,14 @@ public class PlayerController : MonoBehaviour
         }
 
         return true;
+    }
+
+    void OnTriggerEnter2D(Collider2D other) {
+        Debug.Log("Hallo1");
+        if(other.gameObject.CompareTag("Powerup")) {
+            Debug.Log("Hallo");
+            pickupSound.Play();
+        }
     }
 
 }

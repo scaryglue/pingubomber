@@ -7,8 +7,6 @@ public class RollerBlade : MonoBehaviour
     public float itemDuration = 10f;
     public float multiplier = 1.1f;
 
-    public AudioSource pickupSound;
-
     void OnTriggerEnter2D(Collider2D other)
     {
         if(other.CompareTag("Player"))
@@ -28,8 +26,6 @@ public class RollerBlade : MonoBehaviour
         yield return new WaitForSeconds(itemDuration);
 
         controller.timeToMove *= multiplier;
-
-        pickupSound.Play();
 
         Destroy(gameObject);
     }
