@@ -54,7 +54,7 @@ public class MapCreator : MonoBehaviour
         basePosition = bgtm.origin;
 
         //Add outer walls
-        for(int i=0; i < size; i++) {
+        for(int i=0; i <= size; i++) {
             gptm.SetTile(new Vector3Int(basePosition.x + i, basePosition.y, 0), wallTile);
             gptm.SetTile(new Vector3Int(basePosition.x + i, basePosition.y + size, 0), wallTile);
         }
