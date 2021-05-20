@@ -1324,6 +1324,7 @@ MonoBehaviour:
   CountdownBackground: {fileID: 273731027}
   basePosition: {x: 0, y: 0, z: 0}
   mapSize: 0
+  ProsiebenSprite: {fileID: 21300000, guid: e58f48206426bbe4eb70c934a441f673, type: 3}
 --- !u!114 &1231398178
 MonoBehaviour:
   m_ObjectHideFlags: 0

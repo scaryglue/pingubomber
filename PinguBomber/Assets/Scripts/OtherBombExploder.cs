@@ -11,6 +11,7 @@ public class OtherBombExploder : MonoBehaviour
 
         if(other.CompareTag("Bomb")) {
             FindObjectOfType<MapDestroyer>().Explode(other.gameObject.transform.position, DEFAULT_FIRE);
+            Destroy(other.gameObject);
         }
     }
 }

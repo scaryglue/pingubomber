@@ -6,6 +6,10 @@ using UnityEngine.Audio;
 
 public class MainMenu : MonoBehaviour
 {
+    void Start() {
+        GlobalVariables.ProsiebenActivated = false;
+    }
+
     public AudioMixer mixer;
     public void PlayGame()
     {

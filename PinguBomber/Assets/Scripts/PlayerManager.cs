@@ -25,9 +25,19 @@ public class PlayerManager : MonoBehaviour
 
     public int mapSize;
 
+    public Sprite ProsiebenSprite;
+
+    private bool random;
+
     void Start() {
         basePosition = thisTilemap.origin;
-        mapSize = FindObjectOfType<MapCreator>().size;
+        if(FindObjectOfType<MapCreator>() != null) {
+            mapSize = FindObjectOfType<MapCreator>().size;
+            random = true;
+        }
+        else {
+            random = false;
+        }
     }
 
     public void OnJoin(PlayerInput pi)
@@ -35,16 +45,31 @@ public class PlayerManager : MonoBehaviour
         if(numPlayers == 0)
         {
             pi.DeactivateInput();
-            pi.transform.position = new Vector3(basePosition.x + 1, basePosition.y + 1, 0f);
+            if(random) {
+                pi.transform.position = thisTilemap.GetCellCenterWorld(thisTilemap.WorldToCell(new Vector3(basePosition.x + 1, basePosition.y + 1, 0f)));
+            }
+            else {
+                pi.transform.position = new Vector3(-6.5f, -4.5f, 0f);
+            }
             pi.GetComponent<BombSpawner>().tilemap = thisTilemap;
             pi.GetComponent<PlayerController>().playerNumber = 1;
             pi.GetComponent<PlayerController>().tilemap = thisTilemap;
+
+            if(GlobalVariables.ProsiebenActivated) {
+                pi.GetComponentInChildren<SpriteRenderer>().sprite = ProsiebenSprite;
+            }
+
             Player1Join.SetActive(false);
         }
         else if(numPlayers == 1)
         {
             pi.DeactivateInput();
-            pi.transform.position = new Vector3(basePosition.x + mapSize - 1, basePosition.y + mapSize - 1, 0);
+            if(random) {
+                pi.transform.position = new Vector3(basePosition.x + mapSize - 1, basePosition.y + mapSize - 1, 0);
+            }
+            else {
+                pi.transform.position = new Vector3(4.5f, 6.5f, 0);
+            }
             pi.GetComponent<BombSpawner>().tilemap = thisTilemap;
             pi.GetComponent<PlayerController>().playerNumber = 2;
             pi.GetComponent<PlayerController>().tilemap = thisTilemap;

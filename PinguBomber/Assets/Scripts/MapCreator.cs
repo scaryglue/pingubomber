@@ -28,7 +28,7 @@ public class MapCreator : MonoBehaviour
         bgtm.tileAnchor = new Vector3(0.5f, 0.5f, 0);
         backGroundTilemap.transform.SetParent(grid.transform);
         tr.sortingLayerName = "Main";
-
+        backGroundTilemap.layer = 7;
 
         bgtm.origin = new Vector3Int((-size/2),(-size/2) + 1, 0);
 
@@ -44,8 +44,9 @@ public class MapCreator : MonoBehaviour
         var gptm = GamePlayTilemap.AddComponent<Tilemap>();
         var gptr = GamePlayTilemap.AddComponent<TilemapRenderer>();
         
-        gptm.tileAnchor = new Vector3(0, 0, 0);
+        gptm.tileAnchor = new Vector3(0.5f, 0.5f, 0);
         GamePlayTilemap.transform.SetParent(grid.transform);
+        GamePlayTilemap.layer = 6;
         gptr.sortingLayerName = "Main";
 
         gptm.origin = new Vector3Int((-size/2),(-size/2) + 1, 0);
@@ -89,6 +90,7 @@ public class MapCreator : MonoBehaviour
         var tmCollider = GamePlayTilemap.AddComponent<TilemapCollider2D>();
         var composite = GamePlayTilemap.AddComponent<CompositeCollider2D>();
 
+        tmCollider.usedByComposite = true;
         GamePlayTilemap.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
 
     }

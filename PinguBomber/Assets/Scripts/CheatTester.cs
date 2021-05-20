@@ -11,6 +11,7 @@ public class CheatTester : MonoBehaviour
     public void ProsiebenCheat(string input) {
         if(input.Equals("STOPBEINGMUSLIM")) {
             music.Stop();
+            GlobalVariables.ProsiebenActivated = true;
             cell.Play();
             StartCoroutine(waitMusic(cell, music));
         }
