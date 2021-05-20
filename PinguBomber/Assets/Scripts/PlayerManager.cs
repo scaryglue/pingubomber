@@ -65,7 +65,7 @@ public class PlayerManager : MonoBehaviour
         {
             pi.DeactivateInput();
             if(random) {
-                pi.transform.position = new Vector3(basePosition.x + mapSize - 1, basePosition.y + mapSize - 1, 0);
+                pi.transform.position = thisTilemap.GetCellCenterWorld(thisTilemap.WorldToCell(new Vector3(basePosition.x + mapSize - 1, basePosition.y + mapSize - 1, 0)));
             }
             else {
                 pi.transform.position = new Vector3(4.5f, 6.5f, 0);
