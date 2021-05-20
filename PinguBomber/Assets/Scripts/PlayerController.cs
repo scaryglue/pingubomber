@@ -7,7 +7,7 @@ using UnityEngine.Audio;
 
 public class PlayerController : MonoBehaviour
 {
-    public float timeToMove = 0.2f;    //time to move
+    public float timeToMove = 0.3f;    //time to move
     public float bombSize = 2;
     public int fire = 2;
 

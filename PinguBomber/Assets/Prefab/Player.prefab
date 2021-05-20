@@ -50,7 +50,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b48345f3b790c54386b4dc50e119e8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeToMove: 0.5
+  timeToMove: 0.3
   bombSize: 2
   fire: 2
   tilemap: {fileID: 0}
