@@ -34,8 +34,8 @@ public class MapCreator : MonoBehaviour
 
         Vector3Int basePosition = bgtm.origin;
 
-        for(int i = 0; i < size; i++) {
-            for(int j = 0; j < size; j++) {
+        for(int i = 1; i < size; i++) {
+            for(int j = 1; j < size; j++) {
                 bgtm.SetTile(new Vector3Int(basePosition.x + i, basePosition.y + j, 0), backgroundTile);
             }
         }
