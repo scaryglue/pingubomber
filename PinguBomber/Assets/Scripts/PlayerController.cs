@@ -7,6 +7,8 @@ using UnityEngine.Audio;
 
 public class PlayerController : MonoBehaviour
 {
+    public Animator animator;
+
     public float timeToMove = 0.3f;    //time to move
     public float bombSize = 2;
     public int fire = 2;
@@ -27,6 +29,8 @@ public class PlayerController : MonoBehaviour
     public AudioSource pickupSound;
     void Update()
     {
+        animator.SetFloat("speed", Mathf.Abs(movementInput.x + movementInput.y));
+
         if(isMoving)
         {
             return;
